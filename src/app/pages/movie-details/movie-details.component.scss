@@ -1,0 +1,226 @@
+$color_1: #ffffff;
+$background-color_1: #E50914;
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: white;
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #e50914;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #ccc;
+  }
+}
+
+p.overview {
+  max-width: 85%;
+  font-size: 21px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+h1 {
+  color: $color_1;
+  font-weight: bold;
+}
+p {
+  color: $color_1;
+}
+a {
+  &:hover {
+    background-color: $background-color_1;
+  }
+}
+
+.movie-details-container {
+    position: relative;
+    min-height: 100vh;
+    background-color: #141414;
+    color: white;
+}
+
+.movie-poster {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .movie-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 40px;
+        background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .metadata {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 1rem;
+
+            span {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .rating {
+                color: #ffd700;
+            }
+        }
+
+        .overview {
+            max-width: 800px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+
+            .play-btn {
+                background-color: #e50914;
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 4px;
+                font-size: 1.1rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                transition: background-color 0.3s;
+
+                &:hover {
+                    background-color: #f40612;
+                }
+
+                i {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
+
+.trailer-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    .modal-content {
+        position: relative;
+        width: 90%;
+        max-width: 1200px;
+        aspect-ratio: 16/9;
+
+        .close-btn {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .video-container {
+            width: 100%;
+            height: 100%;
+
+            iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+        }
+    }
+}
+
+.cast-section {
+    padding: 40px;
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .cast-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+
+        .cast-card {
+            background-color: #2f2f2f;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            img {
+                width: 100%;
+                aspect-ratio: 1;
+                object-fit: cover;
+            }
+
+            .cast-info {
+                padding: 15px;
+
+                h3 {
+                    margin: 0;
+                    font-size: 1.1rem;
+                }
+
+                p {
+                    margin: 5px 0 0;
+                    color: #999;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

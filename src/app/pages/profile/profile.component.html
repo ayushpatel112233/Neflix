@@ -1,0 +1,130 @@
+<div class="profile-container">
+  <div class="profile-content">
+    <div class="profile-header">
+      <h1>Profile</h1>
+      <button class="edit-button" (click)="toggleEdit()">{{ isEditing ? 'Save' : 'Edit Profile' }}</button>
+    </div>
+
+    <div class="profile-details" *ngIf="user">
+      <div class="profile-avatar">
+        <div class="avatar-container">
+          <img [src]="profileImage" alt="Profile Picture">
+          <div class="avatar-upload" *ngIf="isEditing">
+            <label for="profile-photo" class="upload-label">
+              <i class="fas fa-camera"></i> Change Photo
+            </label>
+            <input type="file" id="profile-photo" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-info">
+        <div class="info-group">
+          <label>Display Name</label>
+          <div *ngIf="!isEditing">
+            <p>{{ user.displayName || 'Not set' }}</p>
+          </div>
+          <div *ngIf="isEditing" class="edit-field">
+            <input type="text" formControlName="displayName" placeholder="Enter your name">
+          </div>
+        </div>
+
+        <div class="info-group" *ngIf="!isEditing">
+          <label>Email</label>
+          <p>{{ user.email }}</p>
+        </div>
+
+        <div class="info-group" *ngIf="!isEditing">
+          <label>Account Created</label>
+          <p>{{ user.metadata?.creationTime | date:'medium' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscription Section - Always show this section -->
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Subscription Details</h2>
+        <button class="payment-button" (click)="goToPayment()">
+          {{ (subscriptionDetails?.status === 'active' ? 'Manage Subscription' : 'Subscribe Now') }}
+        </button>
+      </div>
+      <div class="subscription-details">
+        <div class="info-group">
+          <label>Plan</label>
+          <p>{{ subscriptionDetails?.plan || 'No Plan' }}</p>
+        </div>
+        <div class="info-group">
+          <label>Status</label>
+          <p [class.status-active]="subscriptionDetails?.status === 'active'">
+            {{ subscriptionDetails?.status || 'Inactive' }}
+          </p>
+        </div>
+        <div class="info-group" *ngIf="subscriptionDetails?.nextBillingDate">
+          <label>Next Billing Date</label>
+          <p>{{ subscriptionDetails?.nextBillingDate | date:'mediumDate' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Watch History -->
+    <div class="section-container">
+      <h2>Watch History</h2>
+      <div class="watch-history" *ngIf="watchHistory.length > 0">
+        <div class="watch-item" *ngFor="let item of watchHistory">
+          <div class="watch-info">
+            <div class="watch-title">{{ item.title }}</div>
+            <div class="watch-progress">
+              <div class="progress-bar">
+                <div class="progress" [style.width.%]="item.progress"></div>
+              </div>
+              <span>{{ item.progress }}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="empty-state" *ngIf="watchHistory.length === 0">
+        <p>No watch history available.</p>
+      </div>
+    </div>
+
+    <!-- Preferences -->
+    <div class="section-container">
+      <h2>Preferences</h2>
+      <div class="preferences">
+        <div class="preference-item">
+          <label>Language</label>
+          <select [value]="preferences.language" (change)="onLanguageChange($event)">
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Spanish">Spanish</option>
+          </select>
+        </div>
+        <div class="preference-item">
+          <label>Notifications</label>
+          <div class="toggle-switch">
+            <input type="checkbox" [checked]="preferences.notifications" (change)="onToggleChange($event, 'notifications')">
+            <span class="toggle-slider"></span>
+          </div>
+        </div>
+        <div class="preference-item">
+          <label>Autoplay</label>
+          <div class="toggle-switch">
+            <input type="checkbox" [checked]="preferences.autoplay" (change)="onToggleChange($event, 'autoplay')">
+            <span class="toggle-slider"></span>
+          </div>
+        </div>
+        <div class="preference-item">
+          <label>Subtitles</label>
+          <div class="toggle-switch">
+            <input type="checkbox" [checked]="preferences.subtitles" (change)="onToggleChange($event, 'subtitles')">
+            <span class="toggle-slider"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="logout-container">
+  <button class="logout-button" (click)="logout()">Logout</button>
+</div> 

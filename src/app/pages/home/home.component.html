@@ -1,0 +1,178 @@
+<app-movies-slider></app-movies-slider>
+
+<section class="movies">
+  <div class="contain mt-3 mb-5 p-4">
+    <div class="row">
+      <h3 class="text-white">Trending Movies</h3>
+      <div class="rowposter mt-3 p-2">
+        <ng-container *ngFor="let t of trendingMoviesResults">
+          <div class="position-relative">
+            <img src="https://image.tmdb.org/t/p/original/{{ t.poster_path }}"
+              class="rowimg largeposter" alt="..."
+              (click)="openTrailer(t.id)" 
+              [routerLink]="['/movie',t.id]">
+            <button class="btn btn-play" (click)="openTrailer(t.id); $event.stopPropagation()">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <h3 class="text-white">Discover Movies</h3>
+      <div class="rowposter mt-3 p-2">
+        <ng-container *ngFor="let d of discoverMoviesResults">
+          <div class="position-relative">
+            <img src="https://image.tmdb.org/t/p/original/{{ d.poster_path }}" 
+              class="rowimg largeposter" alt="..." 
+              [routerLink]="['/movie',d.id]">
+            <button class="btn btn-play" (click)="openTrailer(d.id); $event.stopPropagation()">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <h3 class="text-white">Thriller Movies</h3>
+      <div class="rowposter mt-3 p-2">
+        <ng-container *ngFor="let th of thrillerMovieResults">
+          <div class="position-relative">
+            <img src="https://image.tmdb.org/t/p/original/{{ th.poster_path }}"
+              class="rowimg largeposter" alt="..." 
+              [routerLink]="['/movie',th.id]">
+            <button class="btn btn-play" (click)="openTrailer(th.id); $event.stopPropagation()">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <h3 class="text-white">Action</h3>
+      <div class="rowposter mt-3 p-2">
+        <ng-container *ngFor="let a of actionMovieResults">
+          <div class="position-relative">
+            <img src="https://image.tmdb.org/t/p/original/{{ a.poster_path }}"
+              class="rowimg largeposter" alt="..." 
+              [routerLink]="['/movie',a.id]">
+            <button class="btn btn-play" (click)="openTrailer(a.id); $event.stopPropagation()">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <h3 class="text-white">Adventure</h3>
+      <div class="rowposter mt-3 p-2">
+        <ng-container *ngFor="let a of adventureMovieResults">
+          <div class="position-relative">
+            <img src="https://image.tmdb.org/t/p/original/{{ a.poster_path }}"
+              class="rowimg largeposter" alt="..." 
+              [routerLink]="['/movie',a.id]">
+            <button class="btn btn-play" (click)="openTrailer(a.id); $event.stopPropagation()">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <h3 class="text-white">Animation</h3>
+      <div class="rowposter mt-3 p-2">
+        <ng-container *ngFor="let a of animationMovieResults">
+          <div class="position-relative">
+            <img src="https://image.tmdb.org/t/p/original/{{ a.poster_path }}"
+              class="rowimg largeposter" alt="..." 
+              [routerLink]="['/movie',a.id]">
+            <button class="btn btn-play" (click)="openTrailer(a.id); $event.stopPropagation()">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <h3 class="text-white">Comedies</h3>
+      <div class="rowposter mt-3 p-2">
+        <ng-container *ngFor="let c of comedyMovieResults">
+          <div class="position-relative">
+            <img src="https://image.tmdb.org/t/p/original/{{ c.poster_path }}"
+              class="rowimg largeposter" alt="..." 
+              [routerLink]="['/movie',c.id]">
+            <button class="btn btn-play" (click)="openTrailer(c.id); $event.stopPropagation()">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <h3 class="text-white">Documentaries</h3>
+      <div class="rowposter mt-3 p-2">
+        <ng-container *ngFor="let d of documentaryMovieResults">
+          <div class="position-relative">
+            <img src="https://image.tmdb.org/t/p/original/{{ d.poster_path }}"
+              class="rowimg largeposter" alt="..." 
+              [routerLink]="['/movie',d.id]">
+            <button class="btn btn-play" (click)="openTrailer(d.id); $event.stopPropagation()">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <h3 class="text-white">Science-Fiction</h3>
+      <div class="rowposter mt-3 p-2">
+        <ng-container *ngFor="let sf of sciencefictionMovieResults">
+          <div class="position-relative">
+            <img src="https://image.tmdb.org/t/p/original/{{ sf.poster_path }}"
+              class="rowimg largeposter" alt="..." 
+              [routerLink]="['/movie',sf.id]">
+            <button class="btn btn-play" (click)="openTrailer(sf.id); $event.stopPropagation()">
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trailer Modal -->
+<div class="modal fade" id="trailerModal" tabindex="-1" *ngIf="showTrailer">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close btn-close-white" (click)="closeTrailer()"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="isLoadingTrailer" class="text-center">
+          <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <div *ngIf="trailerError" class="alert alert-danger">
+          {{ trailerError }}
+        </div>
+        <iframe *ngIf="trailerUrl && !isLoadingTrailer" 
+          [src]="trailerUrl | safe" 
+          width="100%" 
+          height="400" 
+          frameborder="0" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>

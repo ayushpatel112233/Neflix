@@ -1,0 +1,172 @@
+// .register {
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-image: url(../../../assets/images/login-background.jpg);
+//   height: 100vh;
+//   .container {
+//     padding-top: 6%;
+//     width: 20%;
+//     min-width: 350px;
+//   }
+//   .btn {
+//     padding: 7px 20px;
+//     color: white;
+//     &:hover {
+//       font-weight: bold;
+//     }
+//   }
+
+//   .btn {
+//     padding: 7px 20px;
+//     color: white;
+//     &:hover {
+//       font-weight: bold;
+//     }
+//   }
+
+//   span {
+//     &.helper-text {
+//       font-size: 11px;
+//     }
+//   }
+//   p {
+//     &.login {
+//       margin-top: 10px;
+//       font-size: 20px;
+//       text-transform: capitalize;
+//     }
+//   }
+
+//   .sign-up {
+//       font-size: 18px;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//   }
+// }
+
+// @media only screen and (max-width: 991px) {
+//   .register {
+//     .container {
+//         padding-top: 240px;
+//         h3 {
+//           margin-bottom: 0px!important;
+//         }
+//       }
+//   }
+
+// }
+
+
+
+
+.main-bg-img {
+  position: relative;
+}
+
+.main-bg-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.791) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.6) 100%),
+    url('https://assets.nflxext.com/ffe/siteui/vlv3/c31c3123-3df7-4359-8b8c-475bd2d9925d/c9ec6863-4b81-4c7b-97d5-3a9f262a9f17/ES-en-20231225-popsignuptwoweeks-perspective_alpha_website_large.jpg')
+      center/cover no-repeat;
+  z-index: -99;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85%;
+
+  &__backdrop {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__background {
+    position: absolute;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    z-index: -1;
+
+    &-image {
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
+}
+
+.login-form {
+  width: 100%;
+  max-width: 450px;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  margin-top: -2%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    margin-bottom: 90px;
+  }
+
+  &__title {
+    margin: 1rem 0;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    height: 45px;
+    margin-top: 15px;
+    padding: 0 10px;
+    border-radius: 4px;
+    background-color: #333333;
+    color: #8c8c8c;
+    font-weight: 300;
+  }
+
+  &__error {
+    color: #e87c03;
+    padding: 6px 3px;
+    font-size: 13px;
+  }
+
+  &__button {
+    margin-top: 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin: 24px 0 12px;
+    padding: 14px;
+    background: #e50914;
+    cursor: pointer;
+  }
+
+  &__button:disabled {
+    background: #a50914;
+    cursor: not-allowed;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .login-form {
+    margin-top: 0;
+
+    &__container {
+      padding: 40px 30px;
+    }
+  }
+}

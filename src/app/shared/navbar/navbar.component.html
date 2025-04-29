@@ -1,0 +1,90 @@
+<!-- <nav class="navbar navbar-expand-lg fixed-top" [ngStyle]="navBackground">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="home">NETFLIX</a>
+    <button *ngIf="loggedIn" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div *ngIf="loggedIn" class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active me-2" aria-current="page" routerLink="home">Home</a>
+        </li>
+        <li class="nav-item ms-2 me-4">
+          <a class="nav-link btn btn-danger search" routerLink="search">Search</a>
+        </li>
+        <div class="profile-container">
+          <div class="profile-icon" (click)="toggleProfileMenu()">
+            <img *ngIf="currentUser && currentUser.photoURL" [src]="currentUser.photoURL" alt="Profile" class="profile-image">
+            <div *ngIf="!currentUser?.photoURL" class="profile-placeholder">
+              {{ (currentUser?.email || 'U').charAt(0).toUpperCase() }}
+            </div>
+          </div>
+          <div class="profile-menu" *ngIf="showProfileMenu">
+            <div class="profile-info">
+              <div class="profile-email">{{ currentUser?.email || 'No email available' }}</div>
+              <div class="profile-name">{{ currentUser?.displayName || 'User' }}</div>
+            </div>
+            <div class="profile-actions" *ngIf="showDropdown">
+              <button class="profile-btn" routerLink="/profile/edit">Edit Profile</button>
+              <button class="profile-btn" routerLink="/payment">Payment Methods</button>
+              <button class="profile-btn" (click)="logout()">Sign Out</button>
+            </div>
+          </div>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+
+
+
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="navbar-brand">
+    <a class="navbar-item" routerLink="/">
+      <img src="assets/images/netflix-logo.png" alt="Netflix">
+    </a>
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" routerLink="/browse" routerLinkActive="active">Home</a>
+      <a class="navbar-item" routerLink="/tv-shows" routerLinkActive="active">TV Shows</a>
+      <a class="navbar-item" routerLink="/movies" routerLinkActive="active">Movies</a>
+      <a class="navbar-item" routerLink="/new" routerLinkActive="active">New & Popular</a>
+      <a class="navbar-item" routerLink="/my-list" routerLinkActive="active">My List</a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="search-box" [class.active]="isSearchActive">
+          <input 
+            type="text" 
+            [(ngModel)]="searchQuery" 
+            (keyup.enter)="onSearch()"
+            placeholder="Search titles..."
+            (focus)="toggleSearch()"
+          >
+          <button class="search-button" (click)="onSearch()">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="navbar-item has-dropdown" [class.is-active]="isProfileMenuActive">
+        <a class="navbar-link" (click)="toggleProfileMenu()">
+          <img [src]="user?.photoURL || 'assets/images/default-avatar.png'" alt="Profile" class="profile-image">
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" routerLink="/profile">Profile</a>
+          <a class="navbar-item" routerLink="/account">Account</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" (click)="logout()">Sign out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,57 @@
+<div class="movie-details-container">
+    <!-- Loading indicator -->
+    <div class="loading-container" *ngIf="!getMovieDetailResult">
+        <div class="spinner"></div>
+        <p>Loading movie details...</p>
+    </div>
+
+    <!-- Movie details -->
+    <div class="movie-poster" *ngIf="getMovieDetailResult">
+        <img [src]="'https://image.tmdb.org/t/p/original/' + getMovieDetailResult.backdrop_path" alt="Movie Poster">
+        <div class="movie-info">
+            <h1>{{getMovieDetailResult.original_title}}</h1>
+            <div class="metadata">
+                <span class="rating">{{getMovieDetailResult.vote_average | number:'1.1-1'}} ★</span>
+                <span class="year">{{getMovieDetailResult.release_date | date:'yyyy'}}</span>
+                <span class="duration" *ngIf="getMovieDetailResult.runtime">{{getMovieDetailResult.runtime}} min</span>
+            </div>
+            <p class="overview">{{getMovieDetailResult.overview}}</p>
+            <div class="actions">
+                <button class="play-btn" *ngIf="getMovieVideoResult" (click)="playTrailer()">
+                    <i class="fas fa-play"></i> Play Trailer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trailer Modal -->
+    <div class="trailer-modal" *ngIf="isTrailerPlaying && trailerUrl">
+        <div class="modal-content">
+            <button class="close-btn" (click)="closeTrailer()">×</button>
+            <div class="video-container">
+                <iframe 
+                    [src]="trailerUrl" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cast Section -->
+    <div class="cast-section" *ngIf="getMovieCastResult">
+        <h2>Cast</h2>
+        <div class="cast-list">
+            <div class="cast-card" *ngFor="let cast of getMovieCastResult">
+                <img 
+                    [src]="cast.profile_path ? 'https://image.tmdb.org/t/p/w185/' + cast.profile_path : 'assets/images/no-profile.jpg'" 
+                    [alt]="cast.name">
+                <div class="cast-info">
+                    <h3>{{cast.name}}</h3>
+                    <p>{{cast.character}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

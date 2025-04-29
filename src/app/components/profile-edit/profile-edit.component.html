@@ -1,0 +1,127 @@
+<div class="profile-edit-container">
+  <div class="profile-edit-form">
+    <h2>Edit Profile</h2>
+    
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <!-- Basic Information -->
+      <div class="form-section">
+        <h3>Basic Information</h3>
+        
+        <div class="form-group">
+          <label for="displayName">Display Name *</label>
+          <input 
+            type="text" 
+            id="displayName" 
+            formControlName="displayName" 
+            placeholder="Enter your display name"
+            [class.is-invalid]="profileForm.get('displayName')?.invalid && profileForm.get('displayName')?.touched"
+          >
+          <div class="error-message" *ngIf="profileForm.get('displayName')?.invalid && profileForm.get('displayName')?.touched">
+            {{ getErrorMessage('displayName') }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email" 
+            placeholder="Enter your email"
+            [class.is-invalid]="profileForm.get('email')?.invalid && profileForm.get('email')?.touched"
+            readonly
+          >
+          <div class="error-message" *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched">
+            {{ getErrorMessage('email') }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input 
+            type="tel" 
+            id="phoneNumber" 
+            formControlName="phoneNumber" 
+            placeholder="Enter your phone number"
+            [class.is-invalid]="profileForm.get('phoneNumber')?.invalid && profileForm.get('phoneNumber')?.touched"
+          >
+          <div class="error-message" *ngIf="profileForm.get('phoneNumber')?.invalid && profileForm.get('phoneNumber')?.touched">
+            {{ getErrorMessage('phoneNumber') }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <textarea 
+            id="bio" 
+            formControlName="bio" 
+            placeholder="Tell us about yourself"
+            [class.is-invalid]="profileForm.get('bio')?.invalid && profileForm.get('bio')?.touched"
+            rows="4"
+          ></textarea>
+          <div class="error-message" *ngIf="profileForm.get('bio')?.invalid && profileForm.get('bio')?.touched">
+            {{ getErrorMessage('bio') }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Preferences -->
+      <div class="form-section">
+        <h3>Preferences</h3>
+        
+        <div class="form-group">
+          <label for="language">Language *</label>
+          <select 
+            id="language" 
+            formControlName="language"
+            [class.is-invalid]="profileForm.get('language')?.invalid && profileForm.get('language')?.touched"
+          >
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Spanish">Spanish</option>
+            <option value="French">French</option>
+            <option value="German">German</option>
+          </select>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" formControlName="notifications">
+            <span>Enable Notifications</span>
+          </label>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" formControlName="autoplay">
+            <span>Autoplay Next Episode</span>
+          </label>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" formControlName="subtitles">
+            <span>Show Subtitles</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="error-message" *ngIf="error">
+        {{ error }}
+      </div>
+
+      <div class="success-message" *ngIf="success">
+        {{ success }}
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="cancel-btn" (click)="onCancel()">
+          Cancel
+        </button>
+        <button type="submit" class="save-btn" [disabled]="profileForm.invalid || loading">
+          {{ loading ? 'Saving...' : 'Save Changes' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div> 

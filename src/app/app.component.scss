@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #141414;
+}
+
+app-navbar {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+router-outlet {
+  display: block;
+  margin-top: 60px; // Add space for the fixed navbar
+}

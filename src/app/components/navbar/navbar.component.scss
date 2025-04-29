@@ -1,0 +1,40 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #141414;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  .logo {
+    height: 25px;
+  }
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-item {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #b3b3b3;
+  }
+
+  &.active {
+    color: #ffffff;
+    font-weight: bold;
+  }
+} 

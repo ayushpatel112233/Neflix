@@ -1,0 +1,296 @@
+// .login {
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-image: url(../../../assets/images/login-background.jpg);
+//   height: 100vh;
+//   width: 100vw;
+// }
+// .container {
+//   padding-top: 5%;
+//   width: 58%;
+//   min-width: 350px;
+
+//   .mb-3 {
+//     padding: 0 20px
+//   }
+
+//   .buttons {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     gap: 15px;
+//   }
+//   .register {
+//     width: 52%;
+//     margin: auto;
+//     margin-top: 30px;
+//     max-width: 350px;
+//   }
+//   .btn {
+//     padding: 7px 20px;
+//     color: white;
+//     &:is(.btn-warning) {
+//       color: unset;
+//       font-size: 16px;
+//     }
+//     &:hover,
+//     :focus {
+//       font-weight: bold;
+//     }
+//     &.sign-in {
+//       font-size: 18px;
+//     }
+//   }
+
+//   span {
+//     &.helper-text {
+//       font-size: 11px;
+//     }
+//   }
+
+//   p {
+//     margin-top: 10px;
+//     font-size: 20px;
+//   }
+
+// }
+
+// @media only screen and (max-width: 1743px) and (min-width: 992) {
+//   .login {
+//     height: 100%;
+//     padding-bottom: 40px;
+//   }
+
+
+// }
+
+// @media only screen and (max-width: 991px) {
+//   .login {
+//     height: 100%;
+//     padding-bottom: 40px;
+
+//   }
+//   .container {
+//     padding-top: 214px;
+//     h3 {
+//       margin-bottom: 0 !important;
+//     }
+
+//     .register {
+//       width: 86%;
+//     }
+//   }
+// }
+
+------------
+
+.main-bg-img{
+  // background: url('https://assets.nflxext.com/ffe/siteui/vlv3/c31c3123-3df7-4359-8b8c-475bd2d9925d/c9ec6863-4b81-4c7b-97d5-3a9f262a9f17/ES-en-20231225-popsignuptwoweeks-perspective_alpha_website_large.jpg') center center no-repeat;
+// background-size: cover;
+  position: relative;
+
+}
+
+.main-bg-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.791) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.6) 100%), 
+              url('https://assets.nflxext.com/ffe/siteui/vlv3/c31c3123-3df7-4359-8b8c-475bd2d9925d/c9ec6863-4b81-4c7b-97d5-3a9f262a9f17/ES-en-20231225-popsignuptwoweeks-perspective_alpha_website_large.jpg') center/cover no-repeat;
+              z-index: -99;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85%;
+
+  &__backdrop {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__background {
+    position: absolute;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    z-index: -1;
+
+    &-image {
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
+}
+
+.login-form {
+  width: 100%;
+  max-width: 450px;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  margin-top: -2%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    margin-bottom: 90px;
+  }
+
+  &__footer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #f5f5f1;
+  }
+
+  &__title {
+    margin: 1rem 0;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    height: 45px;
+    margin-top: 15px;
+    padding: 0 10px;
+    border-radius: 4px;
+    background-color: #333333;
+    color: #8c8c8c;
+    font-weight: 300;
+  }
+
+  &__error {
+    color: #e87c03;
+    padding: 6px 3px;
+    font-size: 13px;
+  }
+
+  &__check {
+    width: 16px;
+    height: 16px;
+    background: white;
+  }
+
+  &__check-label {
+    position: absolute;
+    left: 18px;
+  }
+
+  &__button {
+    margin-top: 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin: 24px 0 12px;
+    padding: 14px;
+    background: #e50914;
+    cursor: pointer;
+  }
+
+  &__help:hover {
+    text-decoration: underline;
+  }
+}
+
+.error-box {
+  background-color: #e87c03;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+
+.custom-google-signin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 400px;
+  min-width: 200px;
+  width: 300px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  cursor: pointer;
+  padding: 10px 12px;
+  transition: box-shadow 0.3s ease;
+}
+
+.custom-google-signin:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.google-signin-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #202124;
+}
+
+.user-email {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #5f6368;
+}
+
+.dropdown-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 4px;
+  fill: #5f6368;
+}
+
+.google-icon-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.google-icon {
+  width: 24px;
+  height: 24px;
+}
+
+
+.custom-google-signin {
+  background-color: red; /* Set the background color to red */
+  color: white; /* Text color for better contrast */
+  padding: 10px 20px; /* Add some padding for spacing */
+  border-radius: 5px; /* Optional: Rounded corners */
+  cursor: pointer; /* Change cursor to indicate clickable area */
+  text-align: center; /* Center align the text inside the div */
+  display: inline-block; /* Optional: Make the div behave like a button */
+}
+
+.custom-google-signin:hover {
+  background-color: darkred; /* Change background on hover for better UX */
+}

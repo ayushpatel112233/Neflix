@@ -1,0 +1,42 @@
+<div class="payment-container">
+  <div class="payment-content" *ngIf="selectedPlan">
+    <div class="payment-header">
+      <h1>Complete Your Subscription</h1>
+      <div class="plan-summary">
+        <h2>{{ selectedPlan.name }} Plan</h2>
+        <p class="price">${{ selectedPlan.price }}/month</p>
+      </div>
+    </div>
+
+    <div class="payment-form">
+      <div class="form-group">
+        <label>Card Information</label>
+        <div #cardElement class="card-element"></div>
+        <div id="card-errors" role="alert" *ngIf="error" class="error-message">
+          {{ error }}
+        </div>
+      </div>
+
+      <button 
+        class="payment-button" 
+        (click)="processPayment()"
+        [disabled]="loading">
+        <span *ngIf="!loading">Subscribe Now</span>
+        <span *ngIf="loading" class="loading-spinner">
+          <i class="fas fa-spinner fa-spin"></i>
+          Processing...
+        </span>
+      </button>
+    </div>
+
+    <div class="secure-payment">
+      <i class="fas fa-lock"></i>
+      <p>Your payment information is secure and encrypted</p>
+    </div>
+  </div>
+
+  <div class="loading-overlay" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>Processing your payment...</p>
+  </div>
+</div> 

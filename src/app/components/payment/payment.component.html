@@ -1,0 +1,56 @@
+<div class="payment-container">
+  <!-- Offline Warning -->
+  <div *ngIf="!isOnline" class="alert alert-warning" role="alert">
+    <i class="fas fa-wifi-slash"></i>
+    You are currently offline. Some features may be limited.
+  </div>
+
+  <h2>Choose Your Plan</h2>
+  
+  <div class="plans-container">
+    <div *ngFor="let plan of plans" 
+         class="plan-card" 
+         [class.selected]="selectedPlan.name === plan.name"
+         (click)="selectPlan(plan)">
+      <h3>{{ plan.name }}</h3>
+      <div class="price">${{ plan.price }}/month</div>
+      <ul class="features">
+        <li *ngFor="let feature of plan.features">{{ feature }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="payment-summary">
+    <h4>Payment Summary</h4>
+    <div class="summary-item">
+      <span>Selected Plan</span>
+      <span>{{ selectedPlan.name }}</span>
+    </div>
+    <div class="summary-item">
+      <span>Monthly Price</span>
+      <span>${{ selectedPlan.price }}/month</span>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    <i class="fas fa-exclamation-circle"></i>
+    {{ error }}
+  </div>
+
+  <!-- Payment Method Section -->
+  <!-- Removed Payment Method section as per user request -->
+
+  <!-- Removed Subscribe Now button and success message as per user request -->
+
+  <div class="pay-now-container">
+    <button class="btn pay-now-btn" (click)="onPayNow()" [disabled]="!isOnline">
+      Pay Now
+    </button>
+  </div>
+
+  <div *ngIf="showSuccessMessage" class="alert alert-success mt-3" role="alert">
+    <i class="fas fa-check-circle"></i>
+    Payment successfully completed! Redirecting to your profile...
+  </div>
+</div> 

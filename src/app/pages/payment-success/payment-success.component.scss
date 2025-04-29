@@ -1,0 +1,115 @@
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.success-content {
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  animation: fadeIn 0.5s ease-out;
+
+  .success-icon {
+    font-size: 4rem;
+    color: #4caf50;
+    margin-bottom: 1.5rem;
+    animation: scaleIn 0.5s ease-out;
+
+    i {
+      font-size: 5rem;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #4caf50;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+  }
+
+  .redirect-message {
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 1rem;
+  }
+}
+
+.error-content {
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  animation: fadeIn 0.5s ease-out;
+
+  .error-icon {
+    font-size: 4rem;
+    color: #e50914;
+    margin-bottom: 1.5rem;
+    animation: scaleIn 0.5s ease-out;
+
+    i {
+      font-size: 5rem;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #e50914;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #ccc;
+  }
+
+  .retry-button {
+    background: #e50914;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: #f40612;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+} 

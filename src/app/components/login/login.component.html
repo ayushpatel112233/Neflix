@@ -1,0 +1,234 @@
+<!-- <section class="login">
+  <div class="container">
+    <h3 class="text-white text-center p-4 mb-4 fw-bold">Login</h3>
+    <form novalidate [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="form-label text-white fw-bold">* Email</label>
+        <input type="text" class="form-control" placeholder="Introduce your email" formControlName="email" autocomplete="off">
+        <span class="helper-text text-white" data-error="wrong" data-success="right">* Email is required</span>
+      </div>
+      <div class="mb-3">
+        <label class="form-label text-white fw-bold">* Password</label>
+        <input type="password" class="form-control" placeholder="Introduce your password" formControlName="password" help="La contraseña debe tener minimo 8 caracteres" autocomplete="off">
+        <span class="helper-text text-white" data-error="wrong" data-success="right">* Password is required. Minium length 6 characters</span>
+      </div>
+      <div class="buttons mb-3">
+        <input class="btn btn-danger sign-in" [disabled]="!formLogin.valid" type="submit" value="Login">
+        <p class="text-white text-center text-uppercase fw-bold">Or</p>
+        <button class="btn btn-warning fw-bold" (click)="onClick()">Login With <i class="fab fa-google ms-1"></i></button>
+      </div>
+      <div class="register">
+        <h5 class="text-white text-center fw-bold">No GOOGLE account or not a member?</h5>
+        <a class="btn btn-primary d-flex justify-content-center register" routerLink="/register">Create account</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+[disabled]="!formLogin.valid" -->
+
+
+
+<!-- <section class="login">
+  <div class="container">
+    <h3 class="text-white text-center p-4 mb-4 fw-bold">Login</h3>
+    
+    <form novalidate [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+      
+      
+      <div class="mb-3">
+        <label class="form-label text-white fw-bold">* Email</label>
+        <input 
+          type="email" 
+          class="form-control" 
+          placeholder="Introduce your email" 
+          formControlName="email" 
+          autocomplete="off">
+        <div class="text-danger mt-1" *ngIf="checkControl('email', 'required')">Email is required</div>
+        <div class="text-danger mt-1" *ngIf="checkControl('email', 'email')">Invalid email format</div>
+      </div>
+
+      
+      <div class="mb-3">
+        <label class="form-label text-white fw-bold">* Password</label>
+        <input 
+          type="password" 
+          class="form-control" 
+          placeholder="Introduce your password" 
+          formControlName="password" 
+          autocomplete="off">
+        <div class="text-danger mt-1" *ngIf="checkControl('password', 'required')">Password is required</div>
+        <div class="text-danger mt-1" *ngIf="checkControl('password', 'minlength')">Minimum length is 6 characters</div>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger text-center fw-bold">
+        {{ errorMessage }}
+      </div>
+
+      
+      <div class="buttons mb-3">
+        <input class="btn btn-danger sign-in" [disabled]="!formLogin.valid" type="submit" value="Login">
+        <p class="text-white text-center text-uppercase fw-bold">Or</p>
+        <button type="button" class="btn btn-warning fw-bold" (click)="onClick()">
+          Login With <i class="fab fa-google ms-1"></i>
+        </button>
+      </div>
+
+      
+      <div class="register">
+        <h5 class="text-white text-center fw-bold">No GOOGLE account or not a member?</h5>
+        <a class="btn btn-primary d-flex justify-content-center register" routerLink="/register">Create account</a>
+      </div>
+    </form>
+  </div>
+</section> -->
+
+
+<!-- 
+<main class="main-bg-img w-screen h-screen">
+  <header id="login-header" class="z-10 flex justify-center items-center py-4">
+    <nav class="flex justify-between items-center md:w-[1200px] container px-4">
+       <a routerLink="/">
+        <img class="w-44" src="assets/logo.png" alt="Netflix Logo" />
+      </a>
+      <div class="main-bg-img">
+        <div class="absolute top-0 left-0 p-6 z-50">
+          <a routerLink="/">
+            <img
+              class="w-44 h-auto max-w-full object-contain"
+              src="assets/logo.png"
+              alt="Netflix Logo"
+            />
+          </a>
+        </div>
+      </nav>
+  </header>
+
+  <div class="login-page">
+    <div class="login-form">
+      <div class="login-form__container">
+        <h1 class="login-form__title text-white text-3xl font-bold">Sign In</h1>
+
+        <div *ngIf="errorMessage" class="error-box mt-4">
+          {{ errorMessage }}
+        </div>
+
+        <form (ngSubmit)="onSubmit()" [formGroup]="formLogin" class="login-form__form">
+          
+          <input class="login-form__input" formControlName="email" type="email" placeholder="Email" />
+          <span class="login-form__error" *ngIf="checkControl('email', 'required')">Email is required</span>
+          <span class="login-form__error" *ngIf="checkControl('email', 'email')">Invalid email format</span>
+
+          
+          <input class="login-form__input" formControlName="password" type="password" placeholder="Password" />
+          <span class="login-form__error" *ngIf="checkControl('password', 'required')">Password is required</span>
+          <span class="login-form__error" *ngIf="checkControl('password', 'minlength')">Minimum 6 characters</span>
+
+         
+          <button class="login-form__button text-white" type="submit" [disabled]="!formLogin.valid">
+            Sign In
+          </button>
+
+          <div class="login-form__footer">
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="login-form__check" />
+              Remember me
+            </label>
+            <a href="#" class="login-form__help">Need help?</a>
+          </div>
+        </form>
+
+        
+        <div class="mt-4">
+          <button class="w-full bg-red-600 hover:bg-red-700 text-white rounded-lg py-2 text-sm sm:text-base" (click)="onClick()">
+            Sign in with Google
+          </button>
+        </div>
+
+        
+        <div class="text-white mt-4 text-center">
+          <span>New to Netflix?</span>
+          <a routerLink="/register" class="font-semibold hover:underline">Sign up now.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main> -->
+
+
+
+<main class="main-bg-img w-screen h-screen">
+  <header id="login-header" class="z-10 flex justify-center items-center py-4">
+    <nav class="flex justify-between items-center md:w-[1200px] container px-4">
+      <!-- Logo properly placed here -->
+      <!-- <a routerLink="/">
+        <img
+          class="w-44 h-auto max-w-full object-contain"
+          src="assets/logo.png"
+          alt="Netflix Logo"
+        />
+      </a> -->
+      <!-- Optional: Add more nav items here like language selector or button -->
+    </nav>
+  </header>
+
+  <div class="login-page">
+    <div class="login-form">
+      <div class="login-form__container">
+        <h1 class="login-form__title text-white text-3xl font-bold">Sign In</h1>
+
+        <div *ngIf="errorMessage" class="error-box mt-4">
+          {{ errorMessage }}
+        </div>
+
+        <form (ngSubmit)="onSubmit()" [formGroup]="formLogin" class="login-form__form">
+          <!-- Email Field -->
+          <input class="login-form__input" formControlName="email" type="email" placeholder="Email" />
+          <span class="login-form__error" *ngIf="checkControl('email', 'required')">Email is required</span>
+          <span class="login-form__error" *ngIf="checkControl('email', 'email')">Invalid email format</span>
+
+          <!-- Password Field -->
+          <input class="login-form__input" formControlName="password" type="password" placeholder="Password" />
+          <span class="login-form__error" *ngIf="checkControl('password', 'required')">Password is required</span>
+          <span class="login-form__error" *ngIf="checkControl('password', 'minlength')">Minimum 6 characters</span>
+
+          <!-- Submit Button -->
+          <button class="login-form__button text-white" type="submit" [disabled]="!formLogin.valid">
+            Sign In
+          </button>
+
+          <!-- Footer -->
+          <div class="login-form__footer">
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="login-form__check" />
+              Remember me
+            </label>
+            <a href="#" class="login-form__help">Need help?</a>
+          </div>
+        </form>
+
+        <!-- Google Auth -->
+        <!-- <div class="mt-4">
+          <button class="w-full bg-red-600 hover:bg-red-700 text-white rounded-lg py-2 text-sm sm:text-base" (click)="onClick()">
+            Sign in with Google
+          </button>
+        </div> -->
+        <div class="custom-google-signin" (click)="onClick()">
+          Sign in with Google
+        </div>
+        
+        
+        
+        
+        
+
+        
+        <!-- Signup Redirect -->
+        <div class="text-white mt-4 text-center">
+          <span>New to Netflix?</span>
+          <a routerLink="/register" class="font-semibold hover:underline">Sign up now.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
